@@ -13,11 +13,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - platform
+  - player
+  - player_projectile
+  - enemy
+  - enemy_projectile
   - 
   - 
   - 
@@ -40,4 +40,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Gun
+    uniqueID: 2403822935
+    locked: 0
+  - name: New Layer
+    uniqueID: 2020792791
     locked: 0
