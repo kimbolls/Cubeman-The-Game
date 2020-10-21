@@ -7,7 +7,7 @@ public class enemy_regular_shooting : MonoBehaviour
     public GameObject GunPrefab;
     public GameObject player;
     public Rigidbody2D rb;
-    private GameObject Gun;
+    public GameObject Gun;
 
 
     

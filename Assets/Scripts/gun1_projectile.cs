@@ -5,23 +5,19 @@ using UnityEngine;
 public class gun1_projectile : MonoBehaviour
 {
     //public GameObject impact;
-    //public int damage;
+    public int damage;
     public Rigidbody2D rb;
 
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
-        // enemy enemy = hitInfo.gameObject.GetComponent<enemy>();
-        // if(enemy != null)
-        // {
-        //     enemy.TakeDamage(damage);
+         enemy_attributes enemy = hitInfo.gameObject.GetComponent<enemy_attributes>();
+         if(enemy != null)
+         {
+             enemy.TakeDamage(damage);
 
-        // }
+         }
 
-        // player_details player = hitInfo.gameObject.GetComponent<player_details>();
-        // if(player != null)
-        // {
-        //     player.TakeDamage(damage);
-        // }
+         
 
         // barrierdetails barrier = hitInfo.gameObject.GetComponent<barrierdetails>();
         // if(barrier != null)

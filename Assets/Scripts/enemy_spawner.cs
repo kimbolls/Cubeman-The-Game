@@ -19,7 +19,7 @@ public class enemy_spawner : MonoBehaviour
 
 void enemy_regularSpawn()
 {
-    enemy_regular = Instantiate(enemy_regular,transform.position,Quaternion.identity);
+    GameObject enemy_regular_spawn = Instantiate(enemy_regular,transform.position,Quaternion.identity);
 
 }
 

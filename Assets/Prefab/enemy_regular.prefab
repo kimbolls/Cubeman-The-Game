@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4815165283875195741}
   - component: {fileID: 4815165283875195740}
   - component: {fileID: 130684608697491506}
+  - component: {fileID: 330065867573955251}
   m_Layer: 11
   m_Name: enemy_regular
   m_TagString: Untagged
@@ -148,6 +149,7 @@ MonoBehaviour:
     type: 3}
   player: {fileID: 4006034454321363834, guid: 8bf9f3d167eaff9418a2b0168895a19d, type: 3}
   rb: {fileID: 4815165283875195741}
+  Gun: {fileID: 0}
 --- !u!114 &130684608697491506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +165,20 @@ MonoBehaviour:
   player: {fileID: 0}
   rb: {fileID: 4815165283875195741}
   speed: 0.1
+--- !u!114 &330065867573955251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815165283875195715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9341f9324c3bcaa4aad2979ce6d94034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_hp: 20
+  current_hp: 0
+  alive_status: 1
+  myLevel: {fileID: 1204126588965305, guid: 52bcb58187e71114fb82698649cb05f5, type: 3}
+  shooting: {fileID: 4815165283875195740}

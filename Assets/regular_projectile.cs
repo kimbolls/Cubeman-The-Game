@@ -5,7 +5,7 @@ using UnityEngine;
 public class regular_projectile : MonoBehaviour
 {
     //public GameObject impact;
-    //public int damage;
+    public int damage;
     public Rigidbody2D rb;
 
     void OnCollisionEnter2D(Collision2D hitInfo)
@@ -17,11 +17,11 @@ public class regular_projectile : MonoBehaviour
 
         // }
 
-        // player_details player = hitInfo.gameObject.GetComponent<player_details>();
-        // if(player != null)
-        // {
-        //     player.TakeDamage(damage);
-        // }
+        cube_attributes player = hitInfo.gameObject.GetComponent<cube_attributes>();
+        if(player != null)
+        {
+            player.TakeDamage(damage);
+        }
 
         // barrierdetails barrier = hitInfo.gameObject.GetComponent<barrierdetails>();
         // if(barrier != null)

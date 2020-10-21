@@ -31,7 +31,15 @@ public class cubeman_shooting : MonoBehaviour
 
     void FixedUpdate()
     {   
+        if(GunPrefab != null)
+        {
         StickGun();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         
     }
 
