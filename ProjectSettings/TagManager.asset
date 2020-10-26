@@ -44,6 +44,6 @@ TagManager:
   - name: Gun
     uniqueID: 2403822935
     locked: 0
-  - name: New Layer
+  - name: UI
     uniqueID: 2020792791
     locked: 0
