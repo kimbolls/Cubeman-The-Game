@@ -12,19 +12,23 @@ public class enemy_attributes : MonoBehaviour
     public enemy_regular_shooting shooting;
 
     public level_control level;
+    public enemy_ui enemy_Ui;
 
     
 
     void Start()
     {
         current_hp = max_hp;
+        enemy_Ui.SetMaxHP(max_hp);
         level = myLevel.GetComponent<level_control>();
+        
         
     }
 
    
     void Update()
-    {
+    {   
+        enemy_Ui.SetHP(current_hp);
         if(current_hp <= 0 && alive_status == true)
         { 
             Die();
