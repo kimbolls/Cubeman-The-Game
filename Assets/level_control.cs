@@ -10,6 +10,7 @@ public class level_control : MonoBehaviour
     public static int enemy_kill_count;
     public bool GameIsPaused = false;
     public Text enemytext;
+    public float TimeScaleBefore;
     
     void Start()
     {
@@ -22,6 +23,7 @@ public class level_control : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(Time.timeScale == 0f)
         {
             GameIsPaused = true;
@@ -62,6 +64,7 @@ public class level_control : MonoBehaviour
     {   
         if(GameIsPaused == false)
         { 
+            TimeScaleBefore = Time.timeScale;
             Time.timeScale = 0f;
             PauseMenu.SetActive(true);
             Debug.Log("game is paused");
@@ -69,7 +72,7 @@ public class level_control : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f;
+            Time.timeScale = TimeScaleBefore;
             PauseMenu.SetActive(false);
             Debug.Log("game is unpaused");
             GameIsPaused = false;

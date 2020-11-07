@@ -8,6 +8,7 @@ public class enemy_attributes : MonoBehaviour
     public float current_hp;
     public bool alive_status = true;
     public GameObject myLevel;
+    public GameObject floatingnum;
 
     public enemy_regular_shooting shooting;
 
@@ -38,7 +39,8 @@ public class enemy_attributes : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_hp -= damage;
-        // add colour change
+        GameObject floatin = Instantiate(floatingnum,transform.position,Quaternion.identity);
+        
     }
 
     void Die()

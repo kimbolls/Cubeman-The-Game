@@ -344,6 +344,8 @@ MonoBehaviour:
   current_hp: 0
   alive_status: 1
   myLevel: {fileID: 1204126588965305, guid: 52bcb58187e71114fb82698649cb05f5, type: 3}
+  floatingnum: {fileID: 16272446955413354, guid: c6ff656ec2da1974898c1f6eb4c332fe,
+    type: 3}
   shooting: {fileID: 4815165283875195740}
   level: {fileID: 0}
   enemy_Ui: {fileID: 7638053413435837376}

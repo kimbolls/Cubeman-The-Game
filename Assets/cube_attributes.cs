@@ -12,6 +12,7 @@ public class cube_attributes : MonoBehaviour
     public SpriteRenderer m_SpriteRenderer;
     public Color m_DefaultColor;
     public Color m_DamagedColor;
+    public GameObject floatingnum;
 
     public player_ui player_Ui;
     private IEnumerator coroutine;
@@ -43,7 +44,7 @@ public class cube_attributes : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_hp -= damage;
-        
+        GameObject floatin = Instantiate(floatingnum,transform.position,Quaternion.identity);
         coroutine = Damaged(0.2f);
         StartCoroutine(coroutine);
         
@@ -62,5 +63,14 @@ public class cube_attributes : MonoBehaviour
     {
         current_hp = 0;
         Destroy(gameObject);
+    }
+    
+    public void HealHP(float Heal)
+    {
+        current_hp += Heal;
+        if(current_hp >= max_hp)
+        {
+            current_hp = max_hp;
+        }
     }
 }
