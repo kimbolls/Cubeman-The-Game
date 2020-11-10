@@ -44,7 +44,9 @@ public class cube_attributes : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_hp -= damage;
-        GameObject floatin = Instantiate(floatingnum,transform.position,Quaternion.identity);
+        GameObject FloatNumbers = Instantiate(floatingnum,transform.position,Quaternion.identity);
+        FloatingHandler FloatScript = FloatNumbers.GetComponent<FloatingHandler>();
+        FloatScript.DisplayDamage(damage);
         coroutine = Damaged(0.2f);
         StartCoroutine(coroutine);
         

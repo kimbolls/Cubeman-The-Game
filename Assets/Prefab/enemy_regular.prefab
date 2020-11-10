@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 330065867573955251}
   m_Layer: 11
   m_Name: enemy_regular
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -340,7 +340,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9341f9324c3bcaa4aad2979ce6d94034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_hp: 20
+  max_hp: 30
   current_hp: 0
   alive_status: 1
   myLevel: {fileID: 1204126588965305, guid: 52bcb58187e71114fb82698649cb05f5, type: 3}

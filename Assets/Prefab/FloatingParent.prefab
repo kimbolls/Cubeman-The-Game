@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec9857da4d8a2274fa3384647972b91c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DamageText: {fileID: 5468105870037301521}
 --- !u!1001 &16272447235879372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -166,6 +167,12 @@ PrefabInstance:
 --- !u!224 &2057890758713960422 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2069077515542631978, guid: f6210cd50a1baf84588a84176d05c0ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 16272447235879372}
+  m_PrefabAsset: {fileID: 0}
+--- !u!102 &5468105870037301521 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 5466053716594641117, guid: f6210cd50a1baf84588a84176d05c0ed,
     type: 3}
   m_PrefabInstance: {fileID: 16272447235879372}
   m_PrefabAsset: {fileID: 0}

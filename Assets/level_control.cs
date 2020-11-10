@@ -9,14 +9,20 @@ public class level_control : MonoBehaviour
     public GameObject PauseMenu;
     public static int enemy_kill_count;
     public bool GameIsPaused = false;
-    public Text enemytext;
+    
     public float TimeScaleBefore;
+
     
     void Start()
-    {
+    { 
         player = GameObject.Find("Cubeman");
         enemy_kill_count = 0; 
         Debug.Log(enemy_kill_count); 
+    }
+    void Awake()
+    {
+        TimeScaleBefore = 1f;
+        GameIsPaused = false;
     }
     
 
@@ -43,8 +49,11 @@ public class level_control : MonoBehaviour
             PauseGame();
         }
         
-        string enemycount = enemy_kill_count.ToString();
-        enemytext.text = enemycount;
+        // string enemycount = enemy_kill_count.ToString();
+        // enemytext.text = enemycount;
+        
+        
+        
     }
 
     void Lose()
@@ -54,11 +63,11 @@ public class level_control : MonoBehaviour
         GameIsPaused = true;
     }
 
-    public void CountEnemy()
-    {
-        enemy_kill_count++;
-        Debug.Log("Enemies killed : " + enemy_kill_count);
-    }
+     public void CountEnemy()
+     {
+         enemy_kill_count++;
+         Debug.Log("Enemies killed : " + enemy_kill_count);
+     }
 
     public void PauseGame()
     {   
@@ -78,6 +87,8 @@ public class level_control : MonoBehaviour
             GameIsPaused = false;
         }
     }
+
+    
 
     
 }

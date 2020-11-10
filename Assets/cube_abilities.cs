@@ -16,6 +16,11 @@ public class cube_abilities : MonoBehaviour
     {
         
     }
+
+    void Awake()
+    {
+        Time.timeScale = 1f;
+    }
     // Update is called once per frame
     void Update()
     {   
@@ -43,7 +48,7 @@ public class cube_abilities : MonoBehaviour
 
     void SlowMo()
     {
-        if(SlowMoTrue == false && attributes.current_mp >= SlowMotionMP)
+        if(SlowMoTrue == false && attributes.current_mp >= SlowMotionMP && Time.timeScale != 0f)
         {   
             // slowmoin.Play();
             // slowmofilter.enabled = true;
@@ -51,7 +56,7 @@ public class cube_abilities : MonoBehaviour
             SlowMoTrue = true;
             
         }
-        else if(SlowMoTrue == true)
+        else if(SlowMoTrue == true && Time.timeScale != 0f)
         {
             // slowmoout.Play();
             // slowmofilter.enabled = false;
