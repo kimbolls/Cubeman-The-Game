@@ -9,6 +9,7 @@ public class RandomSpawner : MonoBehaviour
     public Transform[] SpawnPoint;
     public float timer = 0.0f;
     public GameObject enemy_regular;
+    public GameObject enemy_sniper;
     public GameObject HpBoost;
     public GameObject[] EnemyAlive;
     // public level_control LevelControl;
@@ -54,6 +55,12 @@ public class RandomSpawner : MonoBehaviour
         GameObject enemy_regular_spawn = Instantiate(enemy_regular,SpawnPoint[i].position,Quaternion.identity);
     }
 
+    void Spawn_Sniper()
+    {
+        i = Randomize(i);
+        GameObject enemy_sniper_spawn = Instantiate(enemy_sniper,SpawnPoint[i].position,Quaternion.identity);
+    }
+
     void Spawn_HpBoost()
     {
         j = Randomize(j);
@@ -96,6 +103,7 @@ public class RandomSpawner : MonoBehaviour
             {
                 
                 InvokeRepeating("Spawn_Regular",5f,2f);
+                InvokeRepeating("Spawn_Sniper",6f,6f);
                 spawnstatus = true;
                 phase = 2;
             }

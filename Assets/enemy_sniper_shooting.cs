@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class regular_shooting : MonoBehaviour
+public class enemy_sniper_shooting : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    // Start is called before the first frame update
     public Transform Firepoint;
     public GameObject BulletPrefab;
 

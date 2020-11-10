@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class regular_shooting : MonoBehaviour
+public class sniper_shooting : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    // Start is called before the first frame update
     public Transform Firepoint;
     public GameObject BulletPrefab;
 
@@ -12,8 +12,8 @@ public class regular_shooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("Shoot",1f,3f);
-        InvokeRepeating("Shoot",1.2f,3f);
+        InvokeRepeating("Shoot",3f,3f);
+        
     }
 
     // Update is called once per frame
