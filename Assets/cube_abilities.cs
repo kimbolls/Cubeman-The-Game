@@ -6,14 +6,25 @@ public class cube_abilities : MonoBehaviour
 {
     public Rigidbody2D rb;
     public cube_attributes attributes;
+    public gun1_shooting shooting;
     public level_control level;
+    public player_ui player_Ui;
     public bool SlowMoTrue = false;
     public float TimeScale;
     public float MPRegen = 10f;
-    public float SlowMotionMP = 10f;
+    public float SlowMotionMP = 15f;
+    public float OverHeatSpd; 
+    public bool OverHeatStatus = false;
+    public float OverHeatTimer = 0;
+    public float NormalAtkSpd;  
+    public float CurrentAtkSpd;
+
+    public GameObject PProcess;
     
     void Start()
     {
+        GameObject gun1 = GameObject.FindGameObjectWithTag("player_gun");
+        shooting = gun1.GetComponent<gun1_shooting>();
         
     }
 
@@ -24,12 +35,15 @@ public class cube_abilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        CurrentAtkSpd = shooting.attackrate;
         TimeScale = Time.timeScale;
         if(Input.GetKeyDown("e"))
         {
             SlowMo();
         }
 
+        
+        OverHeat();
         MPDegen();
         MPLimiters();
 
@@ -41,9 +55,37 @@ public class cube_abilities : MonoBehaviour
 
     }
 
-    void Dash()
-    {
+    void OverHeat()
+    {   
         
+        
+        player_Ui.SetOh(OverHeatTimer);
+        
+        if(Input.GetKeyDown("q") && attributes.current_mp >= 50f 
+            && OverHeatStatus == false)
+        {   
+            OverHeatTimer += 4f;
+            player_Ui.SetMaxOh(OverHeatTimer);
+            NormalAtkSpd = shooting.attackrate;
+            shooting.attackrate += OverHeatSpd;
+            attributes.current_mp -= 50f;
+            OverHeatStatus = true;
+        }
+
+        if(OverHeatStatus == true)
+        {
+            PProcess.SetActive(true);
+            OverHeatTimer -= Time.deltaTime;
+            if(OverHeatTimer <= 0)
+            {
+                OverHeatTimer = 0;
+                shooting.attackrate = NormalAtkSpd;
+                PProcess.SetActive(false);
+                OverHeatStatus = false;
+            }
+        }
+
+
     }
 
     void SlowMo()
@@ -53,6 +95,7 @@ public class cube_abilities : MonoBehaviour
             // slowmoin.Play();
             // slowmofilter.enabled = true;
             Time.timeScale = 0.5f;
+            PProcess.SetActive(true);
             SlowMoTrue = true;
             
         }
@@ -61,6 +104,7 @@ public class cube_abilities : MonoBehaviour
             // slowmoout.Play();
             // slowmofilter.enabled = false;
             Time.timeScale = 1f; 
+            PProcess.SetActive(false);
             SlowMoTrue = false;   
         }
     }

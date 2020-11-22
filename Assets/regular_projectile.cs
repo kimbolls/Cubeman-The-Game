@@ -8,6 +8,10 @@ public class regular_projectile : MonoBehaviour
     public int damage;
     public Rigidbody2D rb;
 
+    void Start()
+    {
+        Destroy(gameObject,5f);
+    }
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
         // enemy enemy = hitInfo.gameObject.GetComponent<enemy>();

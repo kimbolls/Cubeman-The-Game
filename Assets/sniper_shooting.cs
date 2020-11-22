@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class sniper_shooting : MonoBehaviour
 {
     // Start is called before the first frame update
     public Transform Firepoint;
     public GameObject BulletPrefab;
+    
 
     public float bulletForce;
     // Start is called before the first frame update

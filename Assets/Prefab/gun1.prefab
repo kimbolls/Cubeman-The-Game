@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 8269897372972000746}
   m_Layer: 0
   m_Name: gun1
-  m_TagString: Untagged
+  m_TagString: player_gun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,6 +79,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -147,8 +148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac91c35203f6b742bd29acb27a935ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: -8704497802486120309}
   Firepoint: {fileID: 3319739418934298314}
   BulletPrefab: {fileID: 7730156155509919991, guid: 9a2e20a7612275a458c28c1b5ba8bdf6,
     type: 3}
-  bulletForce: 25
+  bulletForce: 10
+  attackrate: 2

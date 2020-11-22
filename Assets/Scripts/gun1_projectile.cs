@@ -8,13 +8,25 @@ public class gun1_projectile : MonoBehaviour
     public int damage;
     public Rigidbody2D rb;
 
+    void Start()
+    {
+        Destroy(gameObject,5f);
+    }
+
     void OnCollisionEnter2D(Collision2D hitInfo)
     {
          enemy_attributes enemy = hitInfo.gameObject.GetComponent<enemy_attributes>();
          if(enemy != null)
          {
-             enemy.TakeDamage(damage);
+            enemy.TakeDamage(damage);
 
+         }
+
+         enemy_hexagon boss = hitInfo.gameObject.GetComponent<enemy_hexagon>();
+         if(boss != null)
+         {
+            boss.TakeDamage(damage);
+            
          }
 
          

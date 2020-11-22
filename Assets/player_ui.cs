@@ -7,6 +7,7 @@ public class player_ui : MonoBehaviour
 {
     public Slider hpslider;
     public Slider mpslider;
+    public Slider ohslider;
 
     //hp
     public void SetMaxHP(float health)
@@ -31,5 +32,16 @@ public class player_ui : MonoBehaviour
     public void Setmana(float mana)  // set slider value, this will updated every frame
     {
        mpslider.value = mana; //update current value of mana
+    }
+
+    public void SetMaxOh(float overheat)
+    {
+        ohslider.maxValue = overheat;
+        ohslider.value = overheat;
+    }
+
+    public void SetOh(float overheat)
+    {
+        ohslider.value = overheat;
     }
 }

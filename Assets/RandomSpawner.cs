@@ -7,21 +7,25 @@ public class RandomSpawner : MonoBehaviour
 {
 
     public Transform[] SpawnPoint;
+    public GameObject[] platformdestroy;
     public float timer = 0.0f;
     public GameObject enemy_regular;
     public GameObject enemy_sniper;
     public GameObject HpBoost;
     public GameObject[] EnemyAlive;
-    // public level_control LevelControl;
+    public level_control LevelControl;
     public Text enemytext;
     public int phase = 0;
     public bool spawnstatus = false;
-    public float Phase1Timer,Phase2Timer;
+    public float Phase1Timer,Phase2Timer,Phase3Timer;
+    public Transform HexagonSpawn;
+    public GameObject HexagonBoss;
 
     // public float spawndelay;
     // public float spawninterval;
      
     int index,i,j,seconds;
+    public string secondscount;
 
     void Start()
     {
@@ -32,7 +36,7 @@ public class RandomSpawner : MonoBehaviour
     {
         timer += Time.deltaTime;
         seconds = (int) timer;
-        string secondscount = seconds.ToString();
+        secondscount = seconds.ToString();
         enemytext.text = secondscount;
         Phasecontrol();
         // if(timer % 2 == 0 && timer != 0)
@@ -59,6 +63,18 @@ public class RandomSpawner : MonoBehaviour
     {
         i = Randomize(i);
         GameObject enemy_sniper_spawn = Instantiate(enemy_sniper,SpawnPoint[i].position,Quaternion.identity);
+        
+    }
+
+    void Spawn_Hexagon()
+    {
+       //HexagonBoss = Instantiate(HexagonBoss,HexagonSpawn.position,Quaternion.identity);
+        Destroy(platformdestroy[0],0f);
+        Destroy(platformdestroy[1],0f);
+        Destroy(platformdestroy[2],0f);
+        HexagonBoss.SetActive(true);
+        
+       
     }
 
     void Spawn_HpBoost()
@@ -89,6 +105,11 @@ public class RandomSpawner : MonoBehaviour
             Phase2Timer -= Time.deltaTime;
             if(Phase2Timer <= 0){Phase2Timer = 0;}
         }
+        else if(phase == 3)
+        {
+            Phase3Timer -= Time.deltaTime;
+            if(Phase3Timer <= 0){Phase3Timer = 0;}
+        }
         
         if(spawnstatus == false)
         {
@@ -101,11 +122,26 @@ public class RandomSpawner : MonoBehaviour
             }
             else if(Phase1Timer <= 0 && phase == 1 && EnemyAlive.Length == 0)
             {
-                
-                InvokeRepeating("Spawn_Regular",5f,2f);
-                InvokeRepeating("Spawn_Sniper",6f,6f);
+                LevelControl.Invoke("Upgrade",3f);
+                InvokeRepeating("Spawn_Regular",5f,3f);
+                InvokeRepeating("Spawn_Sniper",6f,5f);
                 spawnstatus = true;
                 phase = 2;
+            }
+            else if(Phase2Timer <= 0 && phase == 2 && EnemyAlive.Length ==0)
+            {
+                LevelControl.Invoke("Upgrade",3f);
+                InvokeRepeating("Spawn_Regular",5f,2f);
+                InvokeRepeating("Spawn_Sniper",6f,4f);
+                spawnstatus = true;
+                phase = 3;
+            }
+            else if(Phase3Timer <= 0 && phase == 3 && EnemyAlive.Length == 0)
+            {
+                LevelControl.Invoke("Upgrade",3f);
+                Invoke("Spawn_Hexagon",5f);
+                spawnstatus = true;
+                phase = 4;
             }
         }
         else if(spawnstatus == true)
@@ -118,6 +154,13 @@ public class RandomSpawner : MonoBehaviour
             else if(Phase2Timer <= 0 && phase == 2)
             {
                 CancelInvoke("Spawn_Regular");
+                CancelInvoke("Spawn_Sniper");
+                spawnstatus = false;
+            }
+            else if(Phase3Timer <= 0 && phase == 3)
+            {
+                CancelInvoke("Spawn_Regular");
+                CancelInvoke("Spawn_Sniper");
                 spawnstatus = false;
             }
         }

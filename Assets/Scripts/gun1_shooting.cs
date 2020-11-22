@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class gun1_shooting : MonoBehaviour
 {
-    public Rigidbody2D rb;
     public Transform Firepoint;
     public GameObject BulletPrefab;
 
     public float bulletForce;
 
-    float attackrate = 5f;
+    public float attackrate = 2f;
     float nextAttacktime;
 
     void Start()

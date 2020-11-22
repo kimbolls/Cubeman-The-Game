@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class pause_button : MonoBehaviour
 {
     // Start is called before the first frame update
-    public level_control level_control;
+    public level_control LevelControl;
 
     public GameObject PauseMenu;
     
@@ -14,15 +14,13 @@ public class pause_button : MonoBehaviour
     
     public void ResumeGame()
     {
-        Time.timeScale = 1f;
-        PauseMenu.SetActive(false);
-        Debug.Log("game is unpaused");
-        
+        LevelControl.PauseGame();  
     }
 
     public void Menu()
     {
         // level_control.GameIsPaused = false;
+        Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
 

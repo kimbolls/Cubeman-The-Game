@@ -6,6 +6,7 @@ public class cube_attributes : MonoBehaviour
 {
     public float max_hp;
     public float current_hp;
+    public float regen_hp = 0;
 
     public float max_mp;
     public float current_mp;
@@ -19,7 +20,8 @@ public class cube_attributes : MonoBehaviour
     
 
     void Start()
-    {
+    {   
+        regen_hp = 0f;
         current_hp = max_hp;
         current_mp = max_mp;
         player_Ui.SetMaxHP(max_hp);
@@ -32,12 +34,17 @@ public class cube_attributes : MonoBehaviour
    
     void Update()
     {   
-         player_Ui.SetHP(current_hp);  // update player hp with UI 
-         player_Ui.Setmana(current_mp);
+        current_hp += regen_hp * Time.deltaTime;
+        player_Ui.SetHP(current_hp);  // update player hp with UI 
+        player_Ui.Setmana(current_mp);
         if(current_hp <= 0)
         {
             
             Die();
+        }
+        else if(current_hp >= max_hp)
+        {
+            current_hp = max_hp;
         }
     }
 
@@ -61,9 +68,10 @@ public class cube_attributes : MonoBehaviour
         
     }
 
-    void Die()
+    public void Die()
     {
         current_hp = 0;
+        player_Ui.SetHP(current_hp);
         Destroy(gameObject);
     }
     

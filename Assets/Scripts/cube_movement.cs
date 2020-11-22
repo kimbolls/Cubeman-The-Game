@@ -42,7 +42,7 @@ public class cube_movement : MonoBehaviour
 
     void Jump()
     {
-         if (Input.GetKeyDown(KeyCode.Space) && CurrentJumpCharge != 0) // allow user to jump when space is inputted, prevents jumping when no stamina
+         if (Input.GetKeyDown(KeyCode.Space) && CurrentJumpCharge != 0 && Time.timeScale != 0f) // allow user to jump when space is inputted, prevents jumping when no stamina
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);  // set velocity with jumpforce
             CurrentJumpCharge -= 1;

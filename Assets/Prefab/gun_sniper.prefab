@@ -49,6 +49,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -120,7 +121,7 @@ MonoBehaviour:
   Firepoint: {fileID: 8975391172093816353}
   BulletPrefab: {fileID: 1691369415850137677, guid: 1ae98df7a4ba12f49985b0528e47e992,
     type: 3}
-  bulletForce: 25
+  bulletForce: 10
 --- !u!1 &8119764523319204940
 GameObject:
   m_ObjectHideFlags: 0

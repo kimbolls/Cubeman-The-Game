@@ -22,8 +22,6 @@ public class enemy_attributes : MonoBehaviour
         current_hp = max_hp;
         enemy_Ui.SetMaxHP(max_hp);
         level = myLevel.GetComponent<level_control>();
-        
-        
     }
 
    
