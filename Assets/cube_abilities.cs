@@ -62,7 +62,7 @@ public class cube_abilities : MonoBehaviour
         player_Ui.SetOh(OverHeatTimer);
         
         if(Input.GetKeyDown("q") && attributes.current_mp >= 50f 
-            && OverHeatStatus == false)
+            && OverHeatStatus == false  && Time.timeScale != 0f)
         {   
             OverHeatTimer += 4f;
             player_Ui.SetMaxOh(OverHeatTimer);

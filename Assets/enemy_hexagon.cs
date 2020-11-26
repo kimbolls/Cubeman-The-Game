@@ -13,11 +13,13 @@ public class enemy_hexagon : MonoBehaviour
     public float bulletForce;
     private IEnumerator coroutine;
     public float PatternTimer = 0f;
-    public float max_hp = 1000f;
+    public float max_hp;
     public float current_hp;
     public GameObject WinMenu;
     public hexagon_ui hexagon_ui;
     public level_control level;
+    public AudioSource BossMusic;
+    public float interval;
     void Start()
     {
         current_hp = max_hp;
@@ -64,18 +66,18 @@ public class enemy_hexagon : MonoBehaviour
         if(num == 1)
         {
             InvokeRepeating("Pattern1",0f,2f);
-            PatternTimer = 30f;
+            PatternTimer = 10f;
         }
         else if(num == 2)
         {
             InvokeRepeating("Pattern2",0f,6f);
-            PatternTimer = 30f;
+            PatternTimer = 10f;
         }
         else if(num == 3)
         {
             InvokeRepeating("Pattern1",0f,2f);
             InvokeRepeating("Pattern2",0f,6f);
-            PatternTimer = 30f;
+            PatternTimer = 20f;
         }
 
 
@@ -89,18 +91,18 @@ public class enemy_hexagon : MonoBehaviour
         Spawner(0);
         Spawner(1);
         Spawner(2);
-        coroutine = DelayedSpawner(1.0f,3);
+        coroutine = DelayedSpawner(interval,3);
         StartCoroutine(coroutine);
-        coroutine = DelayedSpawner(1.0f,4);
+        coroutine = DelayedSpawner(interval,4);
         StartCoroutine(coroutine);
-        coroutine = DelayedSpawner(1.0f,5);
+        coroutine = DelayedSpawner(interval,5);
         StartCoroutine(coroutine);
         
     }
     void Pattern2()
     {
         Spawner(6);
-        float delay = 1.0f;
+        float delay = interval;
         coroutine = DelayedSpawner(delay,7);
         StartCoroutine(coroutine);
         coroutine = DelayedSpawner(delay += 0.3f,8);
@@ -145,15 +147,15 @@ public class enemy_hexagon : MonoBehaviour
     {   
         if(i <= 2)
         {
-            coroutine = SpawnRight(1.0f,i);
+            coroutine = SpawnRight(interval,i);
         }
         else if(i > 2 && i <= 5)
         {
-            coroutine = SpawnLeft(1.0f,i);
+            coroutine = SpawnLeft(interval,i);
         }
         else
         {
-            coroutine = SpawnUp(1.0f,i);
+            coroutine = SpawnUp(interval,i);
         }
 
         StartCoroutine(coroutine);
@@ -164,15 +166,15 @@ public class enemy_hexagon : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if(i <= 2)
         {
-            coroutine = SpawnRight(1.0f,i);
+            coroutine = SpawnRight(interval,i);
         }
         else if(i > 2 && i <= 5)
         {
-            coroutine = SpawnLeft(1.0f,i);
+            coroutine = SpawnLeft(interval,i);
         }
         else
         {
-            coroutine = SpawnUp(1.0f,i);
+            coroutine = SpawnUp(interval,i);
         }
 
         StartCoroutine(coroutine);

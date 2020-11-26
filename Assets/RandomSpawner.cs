@@ -11,6 +11,7 @@ public class RandomSpawner : MonoBehaviour
     public float timer = 0.0f;
     public GameObject enemy_regular;
     public GameObject enemy_sniper;
+    public GameObject enemy_tank;
     public GameObject HpBoost;
     public GameObject[] EnemyAlive;
     public level_control LevelControl;
@@ -23,9 +24,15 @@ public class RandomSpawner : MonoBehaviour
 
     // public float spawndelay;
     // public float spawninterval;
-     
+     //
     int index,i,j,seconds;
     public string secondscount;
+    // music controls
+
+    public AudioSource[] PhaseMusic;
+    
+
+    //
 
     void Start()
     {
@@ -37,8 +44,28 @@ public class RandomSpawner : MonoBehaviour
         timer += Time.deltaTime;
         seconds = (int) timer;
         secondscount = seconds.ToString();
-        enemytext.text = secondscount;
+        // enemytext.text = secondscount;
         Phasecontrol();
+
+        switch(phase)
+        {
+            case 1:
+                enemytext.text = "Phase 1";
+                break;
+            case 2:
+                enemytext.text = "Phase 2";
+                break;
+            case 3:
+                enemytext.text = "Phase 3";
+                break;
+            case 4:
+                enemytext.text = "Boss Phase";
+                break;
+            default:
+                enemytext.text = "Get Ready...";
+                break;
+   
+        }
         // if(timer % 2 == 0 && timer != 0)
         // {
         //     Spawn_Regular();
@@ -64,6 +91,12 @@ public class RandomSpawner : MonoBehaviour
         i = Randomize(i);
         GameObject enemy_sniper_spawn = Instantiate(enemy_sniper,SpawnPoint[i].position,Quaternion.identity);
         
+    }
+
+    void Spawn_Tank()
+    {
+        i = Randomize(i);
+        GameObject enemy_tank_spawn = Instantiate(enemy_tank,SpawnPoint[i].position,Quaternion.identity);
     }
 
     void Spawn_Hexagon()
@@ -123,8 +156,8 @@ public class RandomSpawner : MonoBehaviour
             else if(Phase1Timer <= 0 && phase == 1 && EnemyAlive.Length == 0)
             {
                 LevelControl.Invoke("Upgrade",3f);
-                InvokeRepeating("Spawn_Regular",5f,3f);
-                InvokeRepeating("Spawn_Sniper",6f,5f);
+                InvokeRepeating("Spawn_Regular",5f,2f);
+                InvokeRepeating("Spawn_Sniper",6f,4f);
                 spawnstatus = true;
                 phase = 2;
             }
@@ -133,6 +166,7 @@ public class RandomSpawner : MonoBehaviour
                 LevelControl.Invoke("Upgrade",3f);
                 InvokeRepeating("Spawn_Regular",5f,2f);
                 InvokeRepeating("Spawn_Sniper",6f,4f);
+                InvokeRepeating("Spawn_Tank",8f,8f);
                 spawnstatus = true;
                 phase = 3;
             }
@@ -142,6 +176,8 @@ public class RandomSpawner : MonoBehaviour
                 Invoke("Spawn_Hexagon",5f);
                 spawnstatus = true;
                 phase = 4;
+                PhaseMusic[0].Stop();
+                
             }
         }
         else if(spawnstatus == true)
@@ -161,6 +197,7 @@ public class RandomSpawner : MonoBehaviour
             {
                 CancelInvoke("Spawn_Regular");
                 CancelInvoke("Spawn_Sniper");
+                CancelInvoke("Spawn_Tank");
                 spawnstatus = false;
             }
         }

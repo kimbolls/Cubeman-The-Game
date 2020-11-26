@@ -19,6 +19,13 @@ public class level_control : MonoBehaviour
     public bool UpgradeActive = false;
     
     public float TimeScaleBefore;
+    public enemy_hexagon HexagonScript;
+    
+    //music controls
+    public AudioSource UpgradeMusic;
+    public AudioSource WinMusic;
+    public AudioSource LoseMusic;
+    //
 
     
     void Start()
@@ -41,10 +48,16 @@ public class level_control : MonoBehaviour
         if(Time.timeScale == 0f)
         {
             GameIsPaused = true;
+            // m_RandomSpawner.PhaseMusic[0].Pause();
         }
         else
         {
             GameIsPaused = false;
+            // if(m_RandomSpawner.PhaseMusic[0].isPlaying == false)
+            // {
+            //     m_RandomSpawner.PhaseMusic[0].Play();
+            // }
+            
         }
         
         if(player==null && GameIsPaused == false) //when player dies
@@ -73,14 +86,27 @@ public class level_control : MonoBehaviour
         m_LoseMenu.SetActive(true);
         m_LoseMenuScript.UpdateScore(m_RandomSpawner.secondscount);
         GameIsPaused = true;
+        
+        if(HexagonScript.BossMusic.isPlaying == true)
+        {
+            HexagonScript.BossMusic.Stop();
+        }
+        else
+        {
+            m_RandomSpawner.PhaseMusic[0].Pause();
+        }
+        LoseMusic.Play();
     }
 
     public void Win()
-    {
+    {   
+        
         Time.timeScale = 0f;
         m_WinMenu.SetActive(true);
         m_WinMenuScript.UpdateScore(m_RandomSpawner.secondscount);
         GameIsPaused = true;
+        m_RandomSpawner.PhaseMusic[0].Pause();
+        WinMusic.Play();
     }
 
      public void CountEnemy()
@@ -112,6 +138,8 @@ public class level_control : MonoBehaviour
     {
         if(GameIsPaused == false)
         { 
+            m_RandomSpawner.PhaseMusic[0].Pause();
+            UpgradeMusic.Play();
             TimeScaleBefore = Time.timeScale;
             Time.timeScale = 0f;
             UpgradeMenu.SetActive(true);
@@ -121,11 +149,17 @@ public class level_control : MonoBehaviour
         }
         else
         {
+         
+            UpgradeMusic.Stop();
             Time.timeScale = TimeScaleBefore;
             UpgradeMenu.SetActive(false);
             Debug.Log("Ugrade Menu");
             GameIsPaused = false;
             UpgradeActive = false;
+            if(m_RandomSpawner.phase != 4)
+            {
+                m_RandomSpawner.PhaseMusic[0].Play();
+            }
         }
     }
 
