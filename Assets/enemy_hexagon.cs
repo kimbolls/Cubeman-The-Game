@@ -20,6 +20,8 @@ public class enemy_hexagon : MonoBehaviour
     public level_control level;
     public AudioSource BossMusic;
     public float interval;
+    public bool Rage = false;
+    public float SpawnSpeed;
     void Start()
     {
         current_hp = max_hp;
@@ -39,6 +41,12 @@ public class enemy_hexagon : MonoBehaviour
         if(current_hp <= 0)
         { 
             Die();
+        }
+
+        if(current_hp == max_hp/2 && Rage == false)
+        {
+            RageMode();
+            
         }
     }
 
@@ -66,12 +74,12 @@ public class enemy_hexagon : MonoBehaviour
         if(num == 1)
         {
             InvokeRepeating("Pattern1",0f,2f);
-            PatternTimer = 10f;
+            PatternTimer = 7f;
         }
         else if(num == 2)
         {
             InvokeRepeating("Pattern2",0f,6f);
-            PatternTimer = 10f;
+            PatternTimer = 7f;
         }
         else if(num == 3)
         {
@@ -84,6 +92,12 @@ public class enemy_hexagon : MonoBehaviour
         
 
 
+    }
+
+    void RageMode()
+    {
+        SpawnSpeed = SpawnSpeed / 2;
+        Rage = true;
     }
     // 0 - 2 right | 3 - 5 left | 6 - 17 up |
     void Pattern1()
@@ -147,15 +161,15 @@ public class enemy_hexagon : MonoBehaviour
     {   
         if(i <= 2)
         {
-            coroutine = SpawnRight(interval,i);
+            coroutine = SpawnRight(SpawnSpeed,i);
         }
         else if(i > 2 && i <= 5)
         {
-            coroutine = SpawnLeft(interval,i);
+            coroutine = SpawnLeft(SpawnSpeed,i);
         }
         else
         {
-            coroutine = SpawnUp(interval,i);
+            coroutine = SpawnUp(SpawnSpeed,i);
         }
 
         StartCoroutine(coroutine);
@@ -166,15 +180,15 @@ public class enemy_hexagon : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if(i <= 2)
         {
-            coroutine = SpawnRight(interval,i);
+            coroutine = SpawnRight(SpawnSpeed,i);
         }
         else if(i > 2 && i <= 5)
         {
-            coroutine = SpawnLeft(interval,i);
+            coroutine = SpawnLeft(SpawnSpeed,i);
         }
         else
         {
-            coroutine = SpawnUp(interval,i);
+            coroutine = SpawnUp(SpawnSpeed,i);
         }
 
         StartCoroutine(coroutine);

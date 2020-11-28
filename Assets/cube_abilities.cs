@@ -18,13 +18,18 @@ public class cube_abilities : MonoBehaviour
     public float OverHeatTimer = 0;
     public float NormalAtkSpd;  
     public float CurrentAtkSpd;
+    public AudioSource slowmoin;
+    public AudioSource slowmoout;
+    public AudioSource overheatIn;
 
     public GameObject PProcess;
+    public GameObject gun1;
     
     void Start()
     {
-        GameObject gun1 = GameObject.FindGameObjectWithTag("player_gun");
-        shooting = gun1.GetComponent<gun1_shooting>();
+       
+        
+        Debug.Log("Start");
         
     }
 
@@ -35,6 +40,13 @@ public class cube_abilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   
+        if(gun1 == null)
+        {
+            Debug.Log("Gun 1 is null");
+            gun1 = GameObject.FindGameObjectWithTag("player_gun");
+            shooting = gun1.GetComponent<gun1_shooting>();
+            Debug.Log("gun1 is now assigned");
+        }
         CurrentAtkSpd = shooting.attackrate;
         TimeScale = Time.timeScale;
         if(Input.GetKeyDown("e"))
@@ -69,6 +81,7 @@ public class cube_abilities : MonoBehaviour
             NormalAtkSpd = shooting.attackrate;
             shooting.attackrate += OverHeatSpd;
             attributes.current_mp -= 50f;
+            overheatIn.Play();
             OverHeatStatus = true;
         }
 
@@ -92,8 +105,8 @@ public class cube_abilities : MonoBehaviour
     {
         if(SlowMoTrue == false && attributes.current_mp >= SlowMotionMP && Time.timeScale != 0f)
         {   
-            // slowmoin.Play();
-            // slowmofilter.enabled = true;
+            slowmoin.Play();
+            
             Time.timeScale = 0.5f;
             PProcess.SetActive(true);
             SlowMoTrue = true;
@@ -101,8 +114,7 @@ public class cube_abilities : MonoBehaviour
         }
         else if(SlowMoTrue == true && Time.timeScale != 0f)
         {
-            // slowmoout.Play();
-            // slowmofilter.enabled = false;
+            slowmoout.Play();
             Time.timeScale = 1f; 
             PProcess.SetActive(false);
             SlowMoTrue = false;   

@@ -164,8 +164,8 @@ public class RandomSpawner : MonoBehaviour
             else if(Phase2Timer <= 0 && phase == 2 && EnemyAlive.Length ==0)
             {
                 LevelControl.Invoke("Upgrade",3f);
-                InvokeRepeating("Spawn_Regular",5f,2f);
-                InvokeRepeating("Spawn_Sniper",6f,4f);
+                InvokeRepeating("Spawn_Regular",5f,3f);
+                InvokeRepeating("Spawn_Sniper",6f,5f);
                 InvokeRepeating("Spawn_Tank",8f,8f);
                 spawnstatus = true;
                 phase = 3;

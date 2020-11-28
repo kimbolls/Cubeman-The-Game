@@ -31,8 +31,7 @@ public class level_control : MonoBehaviour
     void Start()
     { 
         player = GameObject.Find("Cubeman"); 
-        enemy_kill_count = 0; 
-        Debug.Log(enemy_kill_count); 
+        
     }
     void Awake()
     {

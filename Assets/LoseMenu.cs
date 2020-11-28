@@ -26,7 +26,7 @@ public class LoseMenu : MonoBehaviour
     public void Menu()
     {
         // level_control.GameIsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()

@@ -21,7 +21,7 @@ public class pause_button : MonoBehaviour
     {
         // level_control.GameIsPaused = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()
