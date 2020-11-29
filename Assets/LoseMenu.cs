@@ -16,7 +16,11 @@ public class LoseMenu : MonoBehaviour
     
     public void UpdateScore(string seconds)
     {
-        score.text = seconds;
+        if(score != null)
+        {
+            score.text = seconds;
+        }
+        
     }
     public void RestartGame()
     {

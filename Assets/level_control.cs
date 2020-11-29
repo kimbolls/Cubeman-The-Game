@@ -83,7 +83,8 @@ public class level_control : MonoBehaviour
         Time.timeScale = 0f;  
         Debug.Log("game is paused, player is dead.");
         m_LoseMenu.SetActive(true);
-        m_LoseMenuScript.UpdateScore(m_RandomSpawner.secondscount);
+        if(m_LoseMenuScript.score != null)
+        {m_LoseMenuScript.UpdateScore(m_RandomSpawner.secondscount);}
         GameIsPaused = true;
         
         if(HexagonScript.BossMusic.isPlaying == true)
