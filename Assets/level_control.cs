@@ -25,6 +25,7 @@ public class level_control : MonoBehaviour
     public AudioSource UpgradeMusic;
     public AudioSource WinMusic;
     public AudioSource LoseMusic;
+    public AudioSource TutorialMusic;
     //
 
     
@@ -87,13 +88,24 @@ public class level_control : MonoBehaviour
         {m_LoseMenuScript.UpdateScore(m_RandomSpawner.secondscount);}
         GameIsPaused = true;
         
-        if(HexagonScript.BossMusic.isPlaying == true)
-        {
-            HexagonScript.BossMusic.Stop();
+
+        if(TutorialMusic != null)
+        {   
+            if(TutorialMusic.isPlaying == true)
+            {
+                TutorialMusic.Stop();
+            }
         }
-        else
+        else    
         {
-            m_RandomSpawner.PhaseMusic[0].Pause();
+            if(HexagonScript.BossMusic.isPlaying == true)
+            {
+                HexagonScript.BossMusic.Stop();
+            }
+            else if(m_RandomSpawner.PhaseMusic[0].isPlaying == true)
+            {
+                m_RandomSpawner.PhaseMusic[0].Pause();
+            }
         }
         LoseMusic.Play();
     }
