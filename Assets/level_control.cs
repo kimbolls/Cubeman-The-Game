@@ -20,6 +20,7 @@ public class level_control : MonoBehaviour
     
     public float TimeScaleBefore;
     public enemy_hexagon HexagonScript;
+    public GameObject DifficultyMenu;
     
     //music controls
     public AudioSource UpgradeMusic;
@@ -67,7 +68,7 @@ public class level_control : MonoBehaviour
 
 
 
-        if(player != null && Input.GetKeyDown(KeyCode.Escape) && UpgradeActive == false)
+        if(player != null && Input.GetKeyDown(KeyCode.Escape) && UpgradeActive == false && Time.timeScale != 0f)
         {
             PauseGame();
         }
@@ -172,6 +173,25 @@ public class level_control : MonoBehaviour
             {
                 m_RandomSpawner.PhaseMusic[0].Play();
             }
+        }
+    }
+
+    public void DifficultySet()
+    {
+        if(GameIsPaused == false)
+        { 
+            TimeScaleBefore = Time.timeScale;
+            Time.timeScale = 0f;
+            DifficultyMenu.SetActive(true);
+            Debug.Log("Diffculty Menu");
+            GameIsPaused = true;
+        }
+        else
+        {
+            Time.timeScale = TimeScaleBefore;
+            DifficultyMenu.SetActive(false);
+            Debug.Log("Diffculty Menu");
+            GameIsPaused = false;
         }
     }
 

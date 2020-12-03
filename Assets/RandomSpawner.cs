@@ -21,12 +21,16 @@ public class RandomSpawner : MonoBehaviour
     public float Phase1Timer,Phase2Timer,Phase3Timer;
     public Transform HexagonSpawn;
     public GameObject HexagonBoss;
+    public GameObject DifficultyMenuObj;
+    public difficulty_menu Difficulty_Menu;
+    public difficulty_menu.DifficultyEnum Difficulty;
+    public float RG,SN,TK;
 
     // public float spawndelay;
     // public float spawninterval;
-     //
     int index,i,j,seconds;
     public string secondscount;
+    bool DifficultyBool = false;
     // music controls
 
     public AudioSource[] PhaseMusic;
@@ -146,27 +150,65 @@ public class RandomSpawner : MonoBehaviour
         
         if(spawnstatus == false)
         {
+            if(seconds == 1 && DifficultyBool == false)
+            {
+                LevelControl.DifficultySet();
+                DifficultyBool = true;
+            }
             if(seconds == 4 && phase == 0)
             {
                 InvokeRepeating("Spawn_Regular",1f,3f);
-                InvokeRepeating("Spawn_HpBoost",15f,30f);
+                InvokeRepeating("Spawn_HpBoost",15f,25f);
                 spawnstatus = true;
                 phase = 1;
             }
             else if(Phase1Timer <= 0 && phase == 1 && EnemyAlive.Length == 0)
             {
+                if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
+                {
+                    RG = 3.5f;
+                    SN = 4f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
+                {
+                    RG = 2.5f;
+                    SN = 4f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Hard)
+                {
+                    RG = 2f;
+                    SN = 2.5f;
+                }
                 LevelControl.Invoke("Upgrade",3f);
-                InvokeRepeating("Spawn_Regular",5f,2.5f);
-                InvokeRepeating("Spawn_Sniper",6f,4f);
+                InvokeRepeating("Spawn_Regular",5f,RG);
+                InvokeRepeating("Spawn_Sniper",6f,SN);
                 spawnstatus = true;
                 phase = 2;
             }
             else if(Phase2Timer <= 0 && phase == 2 && EnemyAlive.Length ==0)
             {
+                if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
+                {
+                    RG = 3f;
+                    SN = 5f;
+                    TK = 10f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
+                {
+                    RG = 3f;
+                    SN = 5f;
+                    TK = 8f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Hard)
+                {
+                    RG = 2f;
+                    SN = 2.5f;
+                    TK = 7f;
+                }
                 LevelControl.Invoke("Upgrade",3f);
-                InvokeRepeating("Spawn_Regular",5f,3f);
-                InvokeRepeating("Spawn_Sniper",6f,5f);
-                InvokeRepeating("Spawn_Tank",10f,10f);
+                InvokeRepeating("Spawn_Regular",5f,RG);
+                InvokeRepeating("Spawn_Sniper",6f,SN);
+                InvokeRepeating("Spawn_Tank",10f,TK);
                 spawnstatus = true;
                 phase = 3;
             }
