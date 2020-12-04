@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,19 +18,38 @@ public class enemy_hexagon : MonoBehaviour
     public GameObject WinMenu;
     public hexagon_ui hexagon_ui;
     public level_control level;
+    public RandomSpawner RandomSpawner;
     public AudioSource BossMusic;
     public float interval;
     public bool Rage = false;
     public float SpawnSpeed;
     void Start()
     {
+        if(RandomSpawner.Difficulty == difficulty_menu.DifficultyEnum.Easy)
+        {
+            // interval = 1.2f;
+            max_hp = 2000f;
+        }
+        else if(RandomSpawner.Difficulty == difficulty_menu.DifficultyEnum.Normal)
+        {
+            // interval = 1f;
+            max_hp = 2500f;
+        }
+        else if(RandomSpawner.Difficulty == difficulty_menu.DifficultyEnum.Hard)
+        {
+            // interval = 0.5f;
+            max_hp = 3500f;
+        }
         current_hp = max_hp;
         hexagon_ui.SetMaxHP(max_hp);
+
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         hexagon_ui.SetHP(current_hp);
         PatternTimer -= Time.deltaTime;
         if(PatternTimer <= 0)
@@ -43,7 +62,7 @@ public class enemy_hexagon : MonoBehaviour
             Die();
         }
 
-        if(current_hp == max_hp/2 && Rage == false)
+        if(current_hp <= max_hp/2 && Rage == false)
         {
             RageMode();
             
