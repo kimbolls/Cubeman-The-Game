@@ -9,6 +9,7 @@ public class pause_button : MonoBehaviour
     public level_control LevelControl;
 
     public GameObject PauseMenu;
+    public GameObject QuitConfirm;
     
     
     
@@ -26,6 +27,7 @@ public class pause_button : MonoBehaviour
 
     public void Quit()
     {
-        Application.Quit();
+        // Application.Quit();
+        QuitConfirm.SetActive(true);
     }
 }

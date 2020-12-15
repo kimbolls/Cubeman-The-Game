@@ -2984,9 +2984,9 @@ MonoBehaviour:
   enemytext: {fileID: 1352748128}
   phase: 0
   spawnstatus: 0
-  Phase1Timer: 2
-  Phase2Timer: 2
-  Phase3Timer: 2
+  Phase1Timer: 20
+  Phase2Timer: 40
+  Phase3Timer: 60
   HexagonSpawn: {fileID: 1023152405}
   HexagonBoss: {fileID: 299186100}
   DifficultyMenuObj: {fileID: 162803360}

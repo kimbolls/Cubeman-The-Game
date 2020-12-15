@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject SettingsMenu;
     public AudioMixer audioMixer;
+    public GameObject QuitConfirm;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class MainMenu : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        QuitConfirm.SetActive(true);
     }
 
     public void SetVolume(float volume)

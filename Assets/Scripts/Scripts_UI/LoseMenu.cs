@@ -4,13 +4,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class win_menu : MonoBehaviour
+public class LoseMenu : MonoBehaviour
 {
+    // Start is called before the first frame update
     public level_control LevelControl;
     public Text score;
+    public GameObject QuitConfirm;
+
+
+    
+
+    
     public void UpdateScore(string seconds)
     {
-        score.text = seconds;
+        if(score != null)
+        {
+            score.text = seconds;
+        }
+        
     }
     public void RestartGame()
     {
@@ -20,11 +31,12 @@ public class win_menu : MonoBehaviour
     public void Menu()
     {
         // level_control.GameIsPaused = false;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        SceneManager.LoadScene(0);
     }
 
     public void Quit()
     {
-        Application.Quit();
+        // Application.Quit();
+        QuitConfirm.SetActive(true);
     }
 }
