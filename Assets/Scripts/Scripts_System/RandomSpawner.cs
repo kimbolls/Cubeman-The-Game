@@ -24,6 +24,7 @@ public class RandomSpawner : MonoBehaviour
     public GameObject DifficultyMenuObj;
     public difficulty_menu Difficulty_Menu;
     public difficulty_menu.DifficultyEnum Difficulty;
+    public difficulty_indicator DifficultyIndicator;
     public float RG,SN,TK;
 
     // public float spawndelay;
@@ -50,6 +51,7 @@ public class RandomSpawner : MonoBehaviour
         secondscount = seconds.ToString();
         // enemytext.text = secondscount;
         Phasecontrol();
+        DifficultyReflect();
 
         switch(phase)
         {
@@ -77,6 +79,26 @@ public class RandomSpawner : MonoBehaviour
         // }
     }
 
+    void DifficultyReflect()
+    {
+        if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
+        { 
+            DifficultyIndicator.EasyIcon.SetActive(true);
+            DifficultyIndicator.DifficultyText.text = "Easy";
+        }
+        else if (Difficulty == difficulty_menu.DifficultyEnum.Normal)
+        {
+            DifficultyIndicator.EasyIcon.SetActive(false);
+            DifficultyIndicator.NormalIcon.SetActive(true);
+            DifficultyIndicator.DifficultyText.text = "Normal";
+        }
+        else if (Difficulty == difficulty_menu.DifficultyEnum.Hard)
+        {
+            DifficultyIndicator.EasyIcon.SetActive(false);
+            DifficultyIndicator.HardIcon.SetActive(true);
+            DifficultyIndicator.DifficultyText.text = "Hard";
+        }
+    }
 
     int Randomize(int num)
     {
@@ -189,21 +211,21 @@ public class RandomSpawner : MonoBehaviour
             {
                 if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
                 {
-                    RG = 3f;
-                    SN = 5f;
+                    RG = 3.5f;
+                    SN = 4f;
                     TK = 10f;
                 }
                 else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
                 {
                     RG = 3f;
-                    SN = 5f;
+                    SN = 4f;
                     TK = 8f;
                 }
                 else if(Difficulty == difficulty_menu.DifficultyEnum.Hard)
                 {
                     RG = 2f;
                     SN = 2.5f;
-                    TK = 7f;
+                    TK = 6f;
                 }
                 LevelControl.Invoke("Upgrade",3f);
                 InvokeRepeating("Spawn_Regular",5f,RG);
