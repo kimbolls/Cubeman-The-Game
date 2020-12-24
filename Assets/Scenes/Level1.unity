@@ -3025,8 +3025,10 @@ MonoBehaviour:
   phase: 0
   spawnstatus: 0
   Phase1Timer: 20
-  Phase2Timer: 40
-  Phase3Timer: 60
+  Phase2Timer: 20
+  Phase3Timer: 40
+  Phase4Timer: 25
+  Phase5Timer: 40
   HexagonSpawn: {fileID: 1023152405}
   HexagonBoss: {fileID: 299186100}
   DifficultyMenuObj: {fileID: 162803360}

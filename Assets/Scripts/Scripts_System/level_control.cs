@@ -166,10 +166,10 @@ public class level_control : MonoBehaviour
             UpgradeMusic.Stop();
             Time.timeScale = TimeScaleBefore;
             UpgradeMenu.SetActive(false);
-            Debug.Log("Ugrade Menu");
+            Debug.Log("Upgrade Menu");
             GameIsPaused = false;
             UpgradeActive = false;
-            if(m_RandomSpawner.phase != 4)
+            if(m_RandomSpawner.phase != 6)
             {
                 m_RandomSpawner.PhaseMusic[0].Play();
             }

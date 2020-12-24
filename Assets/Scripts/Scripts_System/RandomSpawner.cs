@@ -18,7 +18,7 @@ public class RandomSpawner : MonoBehaviour
     public Text enemytext;
     public int phase = 0;
     public bool spawnstatus = false;
-    public float Phase1Timer,Phase2Timer,Phase3Timer;
+    public float Phase1Timer,Phase2Timer,Phase3Timer,Phase4Timer,Phase5Timer;
     public Transform HexagonSpawn;
     public GameObject HexagonBoss;
     public GameObject DifficultyMenuObj;
@@ -65,6 +65,12 @@ public class RandomSpawner : MonoBehaviour
                 enemytext.text = "Phase 3";
                 break;
             case 4:
+                enemytext.text = "Phase 4";
+                break;
+            case 5:
+                enemytext.text = "Phase 5";
+                break;
+            case 6:
                 enemytext.text = "Boss Phase";
                 break;
             default:
@@ -169,6 +175,16 @@ public class RandomSpawner : MonoBehaviour
             Phase3Timer -= Time.deltaTime;
             if(Phase3Timer <= 0){Phase3Timer = 0;}
         }
+        else if(phase == 4)
+        {
+            Phase4Timer -= Time.deltaTime;
+            if(Phase4Timer <= 0){Phase4Timer = 0;}
+        }
+        else if(phase == 5)
+        {
+            Phase5Timer -= Time.deltaTime;
+            if(Phase5Timer <= 0){Phase5Timer = 0;}
+        }
         
         if(spawnstatus == false)
         {
@@ -189,6 +205,29 @@ public class RandomSpawner : MonoBehaviour
                 if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
                 {
                     RG = 3.5f;
+                    SN = 4.5f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
+                {
+                    RG = 2.5f;
+                    SN = 4.5f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Hard)
+                {
+                    RG = 2f;
+                    SN = 3f;
+                }
+                LevelControl.Invoke("Upgrade",3f);
+                InvokeRepeating("Spawn_Regular",5f,RG);
+                InvokeRepeating("Spawn_Sniper",6f,SN);
+                spawnstatus = true;
+                phase = 2;
+            }
+            else if(Phase2Timer <= 0 && phase == 2 && EnemyAlive.Length ==0)
+            {
+                if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
+                {
+                    RG = 3f;
                     SN = 4f;
                 }
                 else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
@@ -203,16 +242,16 @@ public class RandomSpawner : MonoBehaviour
                 }
                 LevelControl.Invoke("Upgrade",3f);
                 InvokeRepeating("Spawn_Regular",5f,RG);
-                InvokeRepeating("Spawn_Sniper",6f,SN);
+                InvokeRepeating("Spawn_Sniper",6f,SN);                
                 spawnstatus = true;
-                phase = 2;
+                phase = 3;
             }
-            else if(Phase2Timer <= 0 && phase == 2 && EnemyAlive.Length ==0)
+            else if(Phase3Timer <= 0 && phase == 3 && EnemyAlive.Length ==0)
             {
                 if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
                 {
                     RG = 3.5f;
-                    SN = 4f;
+                    SN = 4.5f;
                     TK = 10f;
                 }
                 else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
@@ -225,6 +264,33 @@ public class RandomSpawner : MonoBehaviour
                 {
                     RG = 2f;
                     SN = 2.5f;
+                    TK = 6.5f;
+                }
+                LevelControl.Invoke("Upgrade",3f);
+                InvokeRepeating("Spawn_Regular",5f,RG);
+                InvokeRepeating("Spawn_Sniper",6f,SN);
+                InvokeRepeating("Spawn_Tank",10f,TK);
+                spawnstatus = true;
+                phase = 4;
+            }
+            else if(Phase4Timer <= 0 && phase == 4 && EnemyAlive.Length ==0)
+            {
+                if(Difficulty == difficulty_menu.DifficultyEnum.Easy)
+                {
+                    RG = 3.5f;
+                    SN = 4f;
+                    TK = 10f;
+                }
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Normal)
+                {
+                    RG = 3f;
+                    SN = 3.5f;
+                    TK = 8f;
+                }   
+                else if(Difficulty == difficulty_menu.DifficultyEnum.Hard)
+                {
+                    RG = 2f;
+                    SN = 2.5f;
                     TK = 6f;
                 }
                 LevelControl.Invoke("Upgrade",3f);
@@ -232,14 +298,14 @@ public class RandomSpawner : MonoBehaviour
                 InvokeRepeating("Spawn_Sniper",6f,SN);
                 InvokeRepeating("Spawn_Tank",10f,TK);
                 spawnstatus = true;
-                phase = 3;
+                phase = 5;
             }
-            else if(Phase3Timer <= 0 && phase == 3 && EnemyAlive.Length == 0)
+            else if(Phase5Timer <= 0 && phase == 5 && EnemyAlive.Length == 0)
             {
                 LevelControl.Invoke("Upgrade",3f);
                 Invoke("Spawn_Hexagon",5f);
                 spawnstatus = true;
-                phase = 4;
+                phase = 6;
                 PhaseMusic[0].Stop();
                 
             }
@@ -258,6 +324,19 @@ public class RandomSpawner : MonoBehaviour
                 spawnstatus = false;
             }
             else if(Phase3Timer <= 0 && phase == 3)
+            {
+                CancelInvoke("Spawn_Regular");
+                CancelInvoke("Spawn_Sniper");
+                spawnstatus = false;
+            }
+            else if(Phase4Timer <= 0 && phase == 4)
+            {
+                CancelInvoke("Spawn_Regular");
+                CancelInvoke("Spawn_Sniper");
+                CancelInvoke("Spawn_Tank");
+                spawnstatus = false;
+            }
+            else if(Phase5Timer <= 0 && phase == 5)
             {
                 CancelInvoke("Spawn_Regular");
                 CancelInvoke("Spawn_Sniper");
