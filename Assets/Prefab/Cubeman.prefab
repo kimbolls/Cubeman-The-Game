@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 4017544459831117052}
   - component: {fileID: 6031593724822576095}
   - component: {fileID: 5061157858258098644}
+  - component: {fileID: 5843934542030244079}
   m_Layer: 9
   m_Name: Cubeman
   m_TagString: Player
@@ -52,6 +53,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c1f04604b7dbb448a4ec3076dbf796d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 543ff53f3333aa2459326fc7ab2b3088, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.26, y: 6.26}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 6.26, y: 6.26}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_hp: 100
   current_hp: 0
+  regen_hp: 0
   max_mp: 100
   current_mp: 0
   m_SpriteRenderer: {fileID: 5112531832968865810}
@@ -203,8 +206,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 6137514942013153328}
   attributes: {fileID: 6031593724822576095}
+  shooting: {fileID: 0}
   level: {fileID: 0}
+  player_Ui: {fileID: 0}
   SlowMoTrue: 0
   TimeScale: 0
   MPRegen: 10
   SlowMotionMP: 30
+  OverHeatSpd: 0
+  OverHeatStatus: 0
+  OverHeatTimer: 0
+  NormalAtkSpd: 0
+  CurrentAtkSpd: 0
+  slowmoin: {fileID: 0}
+  slowmoout: {fileID: 0}
+  overheatIn: {fileID: 0}
+  PProcess: {fileID: 0}
+  gun1: {fileID: 0}
+--- !u!114 &5843934542030244079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006034454321363834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6be6bbf5a02177f429b46277d0aee268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cube_Attributes: {fileID: 0}
+  Player: {fileID: 0}

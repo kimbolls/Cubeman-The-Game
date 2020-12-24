@@ -21,13 +21,12 @@ public class cube_attributes : MonoBehaviour
 
     void Start()
     {   
+        m_SpriteRenderer.color = m_DefaultColor;
         regen_hp = 0f;
         current_hp = max_hp;
         current_mp = max_mp;
         player_Ui.SetMaxHP(max_hp);
         player_Ui.SetMaxMana(max_mp);
-        
-
         m_SpriteRenderer = GetComponent<SpriteRenderer>();
     }
 
