@@ -14,6 +14,7 @@ public class enemy_attributes : MonoBehaviour
 
     public level_control level;
     public enemy_ui enemy_Ui;
+    public AudioSource enemydamagesound;
 
     
 
@@ -37,6 +38,7 @@ public class enemy_attributes : MonoBehaviour
     public void TakeDamage(float damage)
     {
         current_hp -= damage;
+        enemydamagesound.Play();
         GameObject FloatNumbers = Instantiate(floatingnum,transform.position,Quaternion.identity);
         FloatingHandler FloatScript = FloatNumbers.GetComponent<FloatingHandler>();
         FloatScript.DisplayDamage(damage);
@@ -45,6 +47,7 @@ public class enemy_attributes : MonoBehaviour
     void Die()
     {
         Destroy(shooting.Gun);
+        enemydamagesound.Play();
         current_hp = 0;
         level.CountEnemy();
         alive_status = false;

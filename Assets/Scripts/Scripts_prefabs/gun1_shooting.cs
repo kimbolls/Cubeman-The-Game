@@ -10,6 +10,7 @@ public class gun1_shooting : MonoBehaviour
     public float bulletForce;
 
     public float attackrate = 2f;
+    public AudioSource ShootSound;
     float nextAttacktime;
 
     void Start()
@@ -26,6 +27,7 @@ public class gun1_shooting : MonoBehaviour
         {
             Shoot();
             nextAttacktime = Time.time + 1f/ attackrate;
+            ShootSound.Play();
         }
         }
     }

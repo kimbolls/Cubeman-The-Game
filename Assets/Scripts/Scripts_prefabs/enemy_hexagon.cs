@@ -23,6 +23,7 @@ public class enemy_hexagon : MonoBehaviour
     public float interval;
     public bool Rage = false;
     public float SpawnSpeed;
+    public AudioSource enemydamagesound;
     void Start()
     {
         if(RandomSpawner.Difficulty == difficulty_menu.DifficultyEnum.Easy)
@@ -163,6 +164,7 @@ public class enemy_hexagon : MonoBehaviour
     public void TakeDamage(int damage)
     {   
         current_hp -= damage;
+        enemydamagesound.Play();
         GameObject FloatNumbers = Instantiate(floatingnum,transform.position,Quaternion.identity);
         FloatingHandler FloatScript = FloatNumbers.GetComponent<FloatingHandler>();
         FloatScript.DisplayDamage(damage);

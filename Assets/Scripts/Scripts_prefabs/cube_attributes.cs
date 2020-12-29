@@ -16,6 +16,7 @@ public class cube_attributes : MonoBehaviour
     public GameObject floatingnum;
 
     public player_ui player_Ui;
+    public AudioSource playerdamagesound;
     private IEnumerator coroutine;
     
 
@@ -53,6 +54,7 @@ public class cube_attributes : MonoBehaviour
         GameObject FloatNumbers = Instantiate(floatingnum,transform.position,Quaternion.identity);
         FloatingHandler FloatScript = FloatNumbers.GetComponent<FloatingHandler>();
         FloatScript.DisplayDamage(damage);
+        playerdamagesound.Play();
         coroutine = Damaged(0.2f);
         StartCoroutine(coroutine);
         
