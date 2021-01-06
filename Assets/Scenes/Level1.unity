@@ -4543,6 +4543,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6785437250881339471, guid: 608a065b0d9ec644faf8dad34621c2ff,
         type: 3}
+      propertyPath: enemydamagesound
+      value: 
+      objectReference: {fileID: 299186102}
+    - target: {fileID: 6785437250881339471, guid: 608a065b0d9ec644faf8dad34621c2ff,
+        type: 3}
       propertyPath: attackspawn.Array.size
       value: 18
       objectReference: {fileID: 0}

@@ -16,6 +16,8 @@ public class enemy_attributes : MonoBehaviour
     public enemy_ui enemy_Ui;
     public AudioSource enemydamagesound;
 
+    public GameObject DeathParticles;
+
     
 
     void Start()
@@ -49,6 +51,7 @@ public class enemy_attributes : MonoBehaviour
         Destroy(shooting.Gun);
         enemydamagesound.Play();
         current_hp = 0;
+        GameObject DeathEffects = Instantiate(DeathParticles,transform.position,Quaternion.identity);
         level.CountEnemy();
         alive_status = false;
         Destroy(gameObject);

@@ -265,6 +265,8 @@ MonoBehaviour:
   level: {fileID: 0}
   enemy_Ui: {fileID: 2899883287437958463}
   enemydamagesound: {fileID: -1900389009042605258}
+  DeathParticles: {fileID: 5765227181083468283, guid: fe58ed7cb6043e1458954ced97db92b6,
+    type: 3}
 --- !u!82 &-1900389009042605258
 AudioSource:
   m_ObjectHideFlags: 0
