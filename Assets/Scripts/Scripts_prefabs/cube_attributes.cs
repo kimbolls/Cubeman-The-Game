@@ -14,6 +14,7 @@ public class cube_attributes : MonoBehaviour
     public Color m_DefaultColor;
     public Color m_DamagedColor;
     public GameObject floatingnum;
+    public GameObject m_DeathEffects;
 
     public player_ui player_Ui;
     public AudioSource playerdamagesound;
@@ -71,6 +72,8 @@ public class cube_attributes : MonoBehaviour
 
     public void Die()
     {
+        // GameObject DeathEffects = Instantiate(m_DeathEffects,transform.position,Quaternion.identity);
+        DeathParticles();
         current_hp = 0;
         player_Ui.SetHP(current_hp);
         Destroy(gameObject);
@@ -83,5 +86,13 @@ public class cube_attributes : MonoBehaviour
         {
             current_hp = max_hp;
         }
+    }
+
+    public void DeathParticles()
+    {   
+        GameObject DeathEffects = Instantiate(m_DeathEffects,transform.position,Quaternion.identity);
+        ParticleSystem Effect = DeathEffects.GetComponent<ParticleSystem>();
+        var main = Effect.main;
+        main.startColor = m_DefaultColor;
     }
 }

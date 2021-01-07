@@ -24,6 +24,7 @@ public class enemy_hexagon : MonoBehaviour
     public bool Rage = false;
     public float SpawnSpeed;
     public AudioSource enemydamagesound;
+    public GameObject DeathParticles;
     void Start()
     {
         if(RandomSpawner.Difficulty == difficulty_menu.DifficultyEnum.Easy)
@@ -173,6 +174,7 @@ public class enemy_hexagon : MonoBehaviour
     void Die()
     {
         current_hp = 0;
+        GameObject DeathEffects = Instantiate(DeathParticles,transform.position,Quaternion.identity);
         level.Win();
         Destroy(gameObject);
     }  

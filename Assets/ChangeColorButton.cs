@@ -16,12 +16,14 @@ public class ChangeColorButton : MonoBehaviour
         player = GameObject.Find("Cubeman");
         CubeAttributes = player.GetComponent<cube_attributes>();
         Color_Selection = player.GetComponent<color_selection>();
+        SetColorDefault();
     }
 
     void SaveColor(Color SelectedColor)
     {
         Color_Selection.SetColor(SelectedColor.r,SelectedColor.g,SelectedColor.b,SelectedColor.a);
         CubeAttributes.m_SpriteRenderer.color = SelectedColor;
+        CubeAttributes.m_DefaultColor = SelectedColor;
     }
 
     public void SetColorDefault()

@@ -6,7 +6,8 @@ public class regular_projectile : MonoBehaviour
 {
     //public GameObject impact;
     public int damage;
-    public Rigidbody2D rb;
+    public GameObject Particle;
+    public SpriteRenderer Sprite;
 
     void Start()
     {
@@ -38,6 +39,10 @@ public class regular_projectile : MonoBehaviour
         if(hitInfo.gameObject.tag != "bullets") // destroy if collide with anything/dont need?
         {
         // impact = Instantiate(impact, transform.position, Quaternion.identity); *create effect upon collide*
+        GameObject ParticleObject = Instantiate(Particle,transform.position,Quaternion.identity);
+        ParticleSystem Effect = ParticleObject.GetComponent<ParticleSystem>();
+        var main = Effect.main;
+        main.startColor = Sprite.color;
         Destroy(gameObject);
         // Destroy(impact, 0.5f);
         }

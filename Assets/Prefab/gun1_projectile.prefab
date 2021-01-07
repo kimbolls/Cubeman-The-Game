@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9660a69c10b74974f9dc56aad08f3e1e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.24705882, g: 0.88235295, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -136,7 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  rb: {fileID: 7730156155509919993}
+  Particle: {fileID: 5765227181083468283, guid: ada1af69381090a4e848bed93e8aa75d,
+    type: 3}
+  Sprite: {fileID: 7730156155509919994}
 --- !u!96 &5271893378054274527
 TrailRenderer:
   serializedVersion: 2

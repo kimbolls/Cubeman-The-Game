@@ -136,7 +136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  rb: {fileID: 8299666652449869408}
+  Particle: {fileID: 5765227181083468283, guid: ada1af69381090a4e848bed93e8aa75d,
+    type: 3}
+  Sprite: {fileID: 7061936957379943970}
 --- !u!96 &4596062072390911277
 TrailRenderer:
   serializedVersion: 2

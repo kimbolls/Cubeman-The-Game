@@ -3126,7 +3126,6 @@ MonoBehaviour:
   Phase3Timer: 40
   Phase4Timer: 25
   Phase5Timer: 40
-  HexagonSpawn: {fileID: 1023152405}
   HexagonBoss: {fileID: 299186100}
   DifficultyMenuObj: {fileID: 162803360}
   Difficulty_Menu: {fileID: 162803361}
@@ -3135,6 +3134,8 @@ MonoBehaviour:
   RG: 0
   SN: 0
   TK: 0
+  PlatformDissolve: {fileID: 6452312763524014761, guid: fba8fcbe96dcaa34c80b32ab4e8caadf,
+    type: 3}
   secondscount: 
   PhaseMusic:
   - {fileID: 404445322}
@@ -4292,7 +4293,7 @@ GameObject:
   - component: {fileID: 597552352}
   - component: {fileID: 597552351}
   - component: {fileID: 597552350}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: platform_stage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4535,6 +4536,12 @@ PrefabInstance:
       propertyPath: RandomSpawner
       value: 
       objectReference: {fileID: 404445320}
+    - target: {fileID: 6785437250881339471, guid: 608a065b0d9ec644faf8dad34621c2ff,
+        type: 3}
+      propertyPath: DeathParticles
+      value: 
+      objectReference: {fileID: 1280430853417382984, guid: 19d59c87db03c4e47934ff454a1993b6,
+        type: 3}
     - target: {fileID: 6785437250881339471, guid: 608a065b0d9ec644faf8dad34621c2ff,
         type: 3}
       propertyPath: hexagon_bullet
@@ -13405,6 +13412,12 @@ PrefabInstance:
       propertyPath: m_NewColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6031593724822576095, guid: 8bf9f3d167eaff9418a2b0168895a19d,
+        type: 3}
+      propertyPath: m_DeathEffects
+      value: 
+      objectReference: {fileID: 5765227181083468283, guid: 922129601e295194c9c85f2ce78dc774,
+        type: 3}
     - target: {fileID: 6031593724822576095, guid: 8bf9f3d167eaff9418a2b0168895a19d,
         type: 3}
       propertyPath: m_CurrentColor.a

@@ -192,6 +192,7 @@ MonoBehaviour:
   m_DamagedColor: {r: 0, g: 0, b: 0, a: 0}
   floatingnum: {fileID: 16272446955413354, guid: c6ff656ec2da1974898c1f6eb4c332fe,
     type: 3}
+  m_DeathEffects: {fileID: 0}
   player_Ui: {fileID: 0}
   playerdamagesound: {fileID: 0}
 --- !u!114 &5061157858258098644

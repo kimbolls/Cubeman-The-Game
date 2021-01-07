@@ -63,7 +63,7 @@ public class level_control : MonoBehaviour
         
         if(player==null && GameIsPaused == false) //when player dies
         {
-            Lose();
+            Invoke("Lose",0.1f);
         } 
 
 

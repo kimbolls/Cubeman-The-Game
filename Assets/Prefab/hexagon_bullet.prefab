@@ -219,7 +219,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  rb: {fileID: 6004915583887438690}
+  Particle: {fileID: 5765227181083468283, guid: ada1af69381090a4e848bed93e8aa75d,
+    type: 3}
+  Sprite: {fileID: 778776494183199067}
 --- !u!111 &7786434739917811057
 Animation:
   m_ObjectHideFlags: 0

@@ -19,13 +19,15 @@ public class RandomSpawner : MonoBehaviour
     public int phase = 0;
     public bool spawnstatus = false;
     public float Phase1Timer,Phase2Timer,Phase3Timer,Phase4Timer,Phase5Timer;
-    public Transform HexagonSpawn;
+    // public Transform HexagonSpawn;
     public GameObject HexagonBoss;
     public GameObject DifficultyMenuObj;
     public difficulty_menu Difficulty_Menu;
     public difficulty_menu.DifficultyEnum Difficulty;
     public difficulty_indicator DifficultyIndicator;
     public float RG,SN,TK;
+
+    public GameObject PlatformDissolve;
 
     // public float spawndelay;
     // public float spawninterval;
@@ -135,9 +137,13 @@ public class RandomSpawner : MonoBehaviour
     {
        //HexagonBoss = Instantiate(HexagonBoss,HexagonSpawn.position,Quaternion.identity);
         Destroy(platformdestroy[0],0f);
+        GameObject Dissolve1 = Instantiate(PlatformDissolve,platformdestroy[0].transform.position,Quaternion.identity);
         Destroy(platformdestroy[1],0f);
+        GameObject Dissolve2 = Instantiate(PlatformDissolve,platformdestroy[1].transform.position,Quaternion.identity);
         Destroy(platformdestroy[2],0f);
+        GameObject Dissolve3 = Instantiate(PlatformDissolve,platformdestroy[2].transform.position,Quaternion.identity);
         HexagonBoss.SetActive(true);
+
         
        
     }
